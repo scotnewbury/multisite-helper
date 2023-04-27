@@ -15,8 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /*
- * This function sorts the listing of blogs on the network that the user has access to and
- * sorts them alphabetically
+ * This function sorts the listing of blogs on the network that the user has access to alphabetically
 */
 
 function sort_my_multisite_blog_listing ( $blogs ) {
