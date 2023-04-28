@@ -3,7 +3,7 @@
  * Plugin Name: Multisite Helper
  * Plugin URI: https://github.com/scotnewbury/multisite-helper
  * Description: Provides quality of life improvments for administrators of multisite envrionments
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Scot Newbury
  * Author URI: https://scotnewbury.com
  * License: GPL3
@@ -17,10 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-
-
 /*
-    * This function sorts the listing of blogs on the network that the user has access to alphabetically
+* This function sorts the listing of blogs on the network that the user has access to alphabetically
 */
 
 function sort_my_multisite_blog_listing ( $blogs ) {
@@ -55,7 +53,8 @@ function add_new_site_to_multisite() {
  *
  * @return  array                    The array after the additional columns are added
  */
-function multisite_blogs_columns($sites_columns)
+
+ function multisite_blogs_columns($sites_columns)
 {
 
     $columns_before = array_slice( $sites_columns, 0, 2 );
@@ -70,7 +69,6 @@ function multisite_blogs_columns($sites_columns)
     return $sites_columns;
 }
 
-
 /**
  * This function polls the various blogs in the networks and then adds the needed data to the site lising table.
  *
@@ -79,7 +77,8 @@ function multisite_blogs_columns($sites_columns)
  *
  * @return  null                    There is no return value
  */
-function multisite_custom_column($column_name, $blog_id)
+
+ function multisite_custom_column($column_name, $blog_id)
 {
     switch_to_blog( $blog_id ); // Change to the current blog
     switch ( $column_name ) {
@@ -90,7 +89,6 @@ function multisite_custom_column($column_name, $blog_id)
             echo "No value";
     }    
 }
-
 
 add_filter ( 'get_blogs_of_user', __NAMESPACE__ . '\sort_my_multisite_blog_listing' );
 add_action ( 'wp_before_admin_bar_render', __NAMESPACE__ . '\add_new_site_to_multisite' );
